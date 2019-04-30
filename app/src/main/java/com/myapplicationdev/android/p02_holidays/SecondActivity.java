@@ -29,14 +29,18 @@ public class SecondActivity extends AppCompatActivity {
         tvHoliday = this.findViewById(R.id.textView2);
 
         Intent i = getIntent();
-        String year = i.getStringExtra("year");
-        tvHoliday.setText(year);
+        int type = i.getIntExtra("type",0);
 
         holidayArrayList = new ArrayList<Holiday>();
-        holidayArrayList.add(new Holiday("C208", true));
-        holidayArrayList.add(new Holiday("C200", false));
-        holidayArrayList.add(new Holiday("C346", true));
-
+        if (type == 1) {
+            tvHoliday.setText("Secular");
+            holidayArrayList.add(new Holiday("New Year's Day", "1 Jan 2017", "newyear"));
+            holidayArrayList.add(new Holiday("Labour Day", "1 May 2017", "labourday"));
+        } else if (type == 2){
+            tvHoliday.setText("Ethnic & Religion");
+            holidayArrayList.add(new Holiday("Chinese New Year", "28-29 Jan 2017", "cny"));
+            holidayArrayList.add(new Holiday("Good Friday", "14 April 2017", "goodfriday"));
+        }
         adapter = new HolidayAdapter(this, R.layout.row, holidayArrayList);
         lv.setAdapter(adapter);
 
@@ -44,11 +48,10 @@ public class SecondActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Holiday selectedHoliday = holidayArrayList.get(position);
-
-                if (selectedHoliday.isPic() == true){
-                    Toast.makeText(SecondActivity.this, selectedHoliday.getName() + " is a Programming module", Toast.LENGTH_LONG).show();
+                if (position == 1){
+                    Toast.makeText(SecondActivity.this, selectedHoliday.getName() + " Date: " + selectedHoliday.getDate(), Toast.LENGTH_SHORT).show();
                 } else {
-                    Toast.makeText(SecondActivity.this, selectedHoliday.getName() + " is not a Programming module", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(SecondActivity.this, selectedHoliday.getName() + " Date: " + selectedHoliday.getDate(), Toast.LENGTH_SHORT).show();
                 }
             }
         });

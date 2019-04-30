@@ -37,11 +37,13 @@ public class MainActivity extends AppCompatActivity {
         lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                //Intent intent = new Intent(MainActivity.this, SecondActivity.class);
-                if (position == 1){
-                  //  intent.putExtra("type","Secular");
+                Intent intent = new Intent(MainActivity.this, SecondActivity.class);
+                if (position == 0){
+                    intent.putExtra("type",1);
+                    startActivity(intent);
                 } else{
-                  //  intent.putExtra("type","Ethnic & Religion");
+                    intent.putExtra("type",2);
+                    startActivity(intent);
                 }
 
             }

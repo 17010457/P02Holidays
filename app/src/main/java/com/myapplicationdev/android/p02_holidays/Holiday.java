@@ -1,18 +1,38 @@
 package com.myapplicationdev.android.p02_holidays;
 
+
+
 public class Holiday {
     private String name;
-    private boolean pic;
-    public Holiday(String name, boolean pic) {
+    private String date;
+    private String image;
+    public Holiday(String name, String date, String image) {
         this.name = name;
-        this.pic = pic;
+        this.date = date;
+        this.image = image;
     }
+
     public String getName() {
         return name;
     }
-    public boolean isPic() {
 
+    public void setName(String name) {
+        this.name = name;
+    }
 
-        return pic;
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
     }
 }

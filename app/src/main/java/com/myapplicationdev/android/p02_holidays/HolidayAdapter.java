@@ -15,6 +15,7 @@ public class HolidayAdapter extends ArrayAdapter<Holiday> {
     private ArrayList<Holiday> holiday;
     private Context context;
     private TextView tvName;
+    private TextView tvDate;
     private ImageView ivHoliday;
 
     public HolidayAdapter(Context context, int resource, ArrayList<Holiday> objects){
@@ -38,6 +39,7 @@ public class HolidayAdapter extends ArrayAdapter<Holiday> {
 
         // Get the TextView object
         tvName =         rowView.findViewById(R.id.tvHolidayName);
+        tvDate = rowView.findViewById(R.id.tvDate);
         // Get the ImageView object
         ivHoliday =             rowView.findViewById(R.id.ivHoliday);
 
@@ -49,11 +51,18 @@ public class HolidayAdapter extends ArrayAdapter<Holiday> {
         // Set the TextView to show the food
 
         tvName.setText(currentHoliday.getName());
+        tvDate.setText(currentHoliday.getDate());
         // Set the image to star or nostar accordingly
-        if(currentHoliday.isPic()) {
+        if(currentHoliday.getImage() == "newyear") {
+            ivHoliday.setImageResource(R.drawable.newyear);
+        }
+        else if(currentHoliday.getImage() == "labourday") {
+            ivHoliday.setImageResource(R.drawable.labourday);
+        }
+        else if(currentHoliday.getImage() == "cny") {
             ivHoliday.setImageResource(R.drawable.cny);
         }
-        else {
+        else{
             ivHoliday.setImageResource(R.drawable.good_friday);
         }
         // Return the nicely done up View to the ListView
